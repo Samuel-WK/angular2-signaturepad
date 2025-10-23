@@ -1,11 +1,12 @@
 {
-  "name": "angular16-signaturepad",
-  "version": "16.0.3",
-  "homepage": "https://github.com/nicolasalcina/angular2-signaturepad",
-  "bugs": "https://github.com/nicolasalcina/angular2-signaturepad/issues",
+  "name": "samuel-wk-angular16-signaturepad",
+  "version": "16.0.5",
+  "description": "Angular 16+ wrapper for signature_pad library (updated to v5.1.1)",
+  "homepage": "https://github.com/Samuel-WK/angular2-signaturepad",
+  "bugs": "https://github.com/Samuel-WK/angular2-signaturepad/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicolasalcina/angular2-signaturepad.git"
+    "url": "git+https://github.com/Samuel-WK/angular2-signaturepad.git"
   },
   "keywords": [
     "signature",
@@ -13,12 +14,12 @@
     "finger",
     "canvas"
   ],
-  "author": "Wulf Solter <wulf@wulf.co.nz> (http://wulf.co.nz) then ng 14+ Nicolas Alcina",
+  "author": "Samuel-WK (based on work by Wulf Solter and Nicolas Alcina)",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0",
     "@angular/core": "^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0",
-    "signature_pad": "2.3.2"
+    "signature_pad": "^5.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

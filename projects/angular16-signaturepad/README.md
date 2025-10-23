@@ -1,24 +1,21 @@
-# angular16-signaturepad
-Angular 16 component for [szimek/signature_pad](https://www.npmjs.com/package/signature_pad).
-just update angular versions See commit on GitHub for more
+# Angular16 SignaturePad
 
-## Install
-`npm install angular16-signaturepad --save`
+Una librería Angular 16+ que envuelve la popular librería [signature_pad](https://github.com/szimek/signature_pad) para crear firmas suaves en HTML5 Canvas.
 
-## Maintenance
-Will try to update once a year( on summer when there is less customer ;) ) every 2 versions of angular
+## Características
 
-# PAST Angular 13-
-<< JUST A SIMPLE FORK THANKS TO szimzk and wulfsolter >>
+- ✅ Compatible con Angular 8+ hasta Angular 16+
+- ✅ Actualizada para funcionar con signature_pad v5.1.1
+- ✅ Soporte para eventos modernos (beginStroke, endStroke)  
+- ✅ API completa de signature_pad disponible
+- ✅ Soporte TypeScript completo
+- ✅ Compatible con dispositivos táctiles y mouse
 
-# angular2-signaturepad
-Angular 2 component for [szimek/signature_pad](https://www.npmjs.com/package/signature_pad).
+## Instalación
 
-# No Longer Maintained
-<< THIS IS NO LONGER IN USE BY OWNER. PROBLEMS CAN AND DO EXIST. PRs ARE SUPER WELCOME, BUT I CAN NOT IDENTIFY WHAT YOUR ISSUES ARE, NOR WILL I CHANGE THINGS BECAUSE ANGULAR HAS CHANGED IN THE YEARS SINCE I WROTE THIS. I DO NOT USE THIS, I CAN'T HELP YOU WITH YOUR PROBLEMS. >>
-
-## Install
-`npm install angular2-signaturepad --save`
+```bash
+npm install @samuel-wk/angular16-signaturepad signature_pad
+```
 
 ## Reference Implementation
 
