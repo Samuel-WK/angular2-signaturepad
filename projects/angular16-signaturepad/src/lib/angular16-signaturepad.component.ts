@@ -8,7 +8,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 
-import * as SignaturePadNative from 'signature_pad';
+import SignaturePadLibrary from 'signature_pad';
 
 export interface Point {
   x: number;
@@ -49,9 +49,11 @@ export class SignaturePad implements AfterContentInit, OnDestroy {
       canvas.width = (this.options as any).canvasWidth;
     }
 
-    this.signaturePad = new SignaturePadNative.default(canvas, this.options);
-    this.signaturePad.onBegin = this.onBegin.bind(this);
-    this.signaturePad.onEnd = this.onEnd.bind(this);
+    this.signaturePad = new SignaturePadLibrary(canvas, this.options);
+    
+    // En versión 5.x, onBegin y onEnd se reemplazaron por eventos
+    this.signaturePad.addEventListener('beginStroke', () => this.onBegin());
+    this.signaturePad.addEventListener('endStroke', () => this.onEnd());
   }
 
   public ngOnDestroy(): void {

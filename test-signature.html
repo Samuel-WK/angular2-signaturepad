@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Signature Pad v5.1.1</title>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@5.1.1/dist/signature_pad.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #signature-canvas {
+            border: 1px solid #000;
+            border-radius: 5px;
+            background: #fff;
+        }
+        button {
+            margin: 10px 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Signature Pad v5.1.1</h1>
+    <p>Este es un test para verificar que signature_pad 5.1.1 funciona correctamente.</p>
+    
+    <canvas id="signature-canvas" width="400" height="200"></canvas>
+    <br>
+    
+    <button onclick="clearSignature()">Limpiar</button>
+    <button onclick="saveSignature()">Guardar PNG</button>
+    <button onclick="saveSVG()">Guardar SVG</button>
+    <button onclick="checkEmpty()">¿Está vacío?</button>
+    
+    <div id="output"></div>
+
+    <script>
+        const canvas = document.getElementById('signature-canvas');
+        const signaturePad = new SignaturePad(canvas, {
+            backgroundColor: 'rgba(255, 255, 255, 0)',
+            penColor: 'rgb(0, 0, 0)',
+            minWidth: 1,
+            maxWidth: 3
+        });
+
+        // Eventos de signature_pad v5.x
+        signaturePad.addEventListener('beginStroke', () => {
+            console.log('Comenzando trazo...');
+            document.getElementById('output').innerHTML = '<p style="color: green;">Comenzando trazo...</p>';
+        });
+
+        signaturePad.addEventListener('endStroke', () => {
+            console.log('Finalizando trazo...');
+            document.getElementById('output').innerHTML = '<p style="color: blue;">Finalizando trazo...</p>';
+        });
+
+        function clearSignature() {
+            signaturePad.clear();
+            document.getElementById('output').innerHTML = '<p>Signature pad limpiado</p>';
+        }
+
+        function saveSignature() {
+            if (signaturePad.isEmpty()) {
+                document.getElementById('output').innerHTML = '<p style="color: red;">Por favor, dibuja algo primero!</p>';
+            } else {
+                const dataURL = signaturePad.toDataURL();
+                document.getElementById('output').innerHTML = '<p>PNG guardado! <a href="' + dataURL + '" download="signature.png">Descargar</a></p>';
+            }
+        }
+
+        function saveSVG() {
+            if (signaturePad.isEmpty()) {
+                document.getElementById('output').innerHTML = '<p style="color: red;">Por favor, dibuja algo primero!</p>';
+            } else {
+                const svgString = signaturePad.toSVG();
+                const blob = new Blob([svgString], { type: 'image/svg+xml' });
+                const url = URL.createObjectURL(blob);
+                document.getElementById('output').innerHTML = '<p>SVG guardado! <a href="' + url + '" download="signature.svg">Descargar</a></p>';
+            }
+        }
+
+        function checkEmpty() {
+            const isEmpty = signaturePad.isEmpty();
+            document.getElementById('output').innerHTML = '<p>¿Está vacío? ' + (isEmpty ? 'SÍ' : 'NO') + '</p>';
+        }
+
+        // Función para redimensionar canvas en dispositivos de alta densidad
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext('2d').scale(ratio, ratio);
+            signaturePad.clear();
+        }
+
+        // Llamar a resizeCanvas al cargar
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+    </script>
+</body>
+</html>
